@@ -9,12 +9,12 @@ public class UpdatePolygonCollider : MonoBehaviour
     public List<Vector2> polygonPoints = new List<Vector2>();
 
     void Start() {
-        polygonPoints.Add(new Vector2(0, 0));
-        polygonPoints.Add(new Vector2(1, 1));
-        polygonPoints.Add(new Vector2(2, 2));
-        polygonPoints.Add(new Vector2(6, 6));
-        polygonPoints.Add(new Vector2(1, 7));
-        polygonPoints.Add(new Vector2(9, 9));
+        polygonPoints.Add(new Vector2(0, 1));
+        polygonPoints.Add(new Vector2(-1, 1));
+        polygonPoints.Add(new Vector2(-0.5f, -1));
+        polygonPoints.Add(new Vector2(0.5f, -1));
+        polygonPoints.Add(new Vector2(3, 0.5f));
+
 
         polygonCollider = GetComponent<PolygonCollider2D>();
         //var numberOfPoints = polygonCollider.GetTotalPointCount();
