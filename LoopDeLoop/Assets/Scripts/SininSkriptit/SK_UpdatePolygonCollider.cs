@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SK_UpdatePolygonCollider : MonoBehaviour
 {
-    public PolygonCollider2D polygonCollider;
+   PolygonCollider2D polygonCollider;
 
     public List<Vector2> polygonPoints = new List<Vector2>();
 
@@ -14,26 +14,17 @@ public class SK_UpdatePolygonCollider : MonoBehaviour
         polygonPoints.Add(new Vector2(2, 2));
         polygonPoints.Add(new Vector2(6, 6));
         polygonPoints.Add(new Vector2(1, 7));
+        polygonPoints.Add(new Vector2(9, 9));
 
         polygonCollider = GetComponent<PolygonCollider2D>();
-        var numberOfPoints = polygonCollider.GetTotalPointCount();
+        //var numberOfPoints = polygonCollider.GetTotalPointCount();
 
+        polygonCollider.SetPath(0, polygonPoints);
+        // this sets path of 0, points (vector2) to be what is in the list "polygonPoints. 
 
-        var myPoints = polygonCollider.points;
-        myPoints[0] = polygonPoints[0];
-        myPoints[4] = polygonPoints[4];
-        // do stuff with myPoints array
-        polygonCollider.points = myPoints;
-
-        print(" joo" + myPoints[0] + myPoints[1] + myPoints[4]); 
-        /*polygonCollider.points[0] = polygonPoints[0];
-        polygonCollider.points[1] = polygonPoints[1];
-        polygonCollider.points[2] = polygonPoints[2];
-        polygonCollider.points[3] = polygonPoints[3];
-        polygonCollider.points[4] = polygonPoints[4];*/
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         
