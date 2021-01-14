@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SK_UpdatePolygonCollider : MonoBehaviour
+public class UpdatePolygonCollider : MonoBehaviour
 {
    PolygonCollider2D polygonCollider;
 
