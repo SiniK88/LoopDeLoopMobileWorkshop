@@ -4,69 +4,55 @@ using UnityEngine;
 
 public class InsideOfPolygonCollider : MonoBehaviour
 {
+
+    public int ballsInside;
     PolygonCollider2D pc;
-    CircleCollider2D CC2D;
-
-    Vector2 center = new Vector2(19, 19);
-    float radius = 0.5f;
-    float angle = 43;
-
-    Vector2 ballpoint = new Vector2();
-    List<Vector2> ballpoints = new List<Vector2>();
-    List<bool> areAllPointsInside = new List<bool>();
-    bool allTrue = false; 
 
     [SerializeField]
     private ContactFilter2D contactFilter;
 
-    int numColliders = 10; // maximum number of result that can be returned
-    void Start()
-    {
+    List<Vector2> offsets = new List<Vector2>();
+
+    void Start() {
+
         pc = GetComponent<PolygonCollider2D>();
-        CC2D = GetComponent<CircleCollider2D>();
-
-        for (int i = 0; i < 360; i++) {
-
-            ballpoints.Add(new Vector2(4 + radius * Mathf.Cos(i * (Mathf.PI / 180)), 4 + radius * Mathf.Sin(i * (Mathf.PI / 180))));
-            print("pisteet sisällä " + ballpoints[i]);
-        }
-
-
-
-        /* CircleCollider2D[] colliders = new CircleCollider2D[numColliders];
-         int colliderCount = pc.OverlapCollider(contactFilter, colliders);
-         print(" ball is touching polygon collider " + colliderCount); */
-
-        var sisällä = pc.bounds.Contains(ballpoint);
-        //print(" Sisältääkö pisteen " + sisällä);
-
-        for (int i = 0; i < 360; i++) {
-
-            areAllPointsInside.Add(pc.bounds.Contains(ballpoints[i]));
-            print(areAllPointsInside[i]); 
-        }
-
-        foreach (bool b in areAllPointsInside) {
-            if (b) {
-                allTrue = true;
-            } else {
-                allTrue = false;
-                break;
-            }
-        }
-
-        if (allTrue == true) {
-            print("all points inside");
+        //offsets = new List<Vector2> { Vector2.up * 0.5f, Vector2.right * 0.5f, Vector2.down * 0.5f, Vector2.left * 0.5f };
+        for (int i = 0; i < 6; i++) {
+            offsets.Add(new Vector2(0 + 0.5f * Mathf.Cos((i * 60) * (Mathf.PI / 180)), 0 + 0.5f * Mathf.Sin((i * 60) * (Mathf.PI / 180))));
         }
 
     }
 
-    private void OnTriggerStay2D(Collider2D collision) {
-        print("OnTriggerStay detected"); 
-        if (collision.tag == "Ball1") {
-            CircleCollider2D[] colliders = new CircleCollider2D[numColliders];
-            int colliderCount = pc.OverlapCollider(contactFilter, colliders);
-            print(" ball is touching polygon collider " + colliderCount);
+    public List<GameObject> BallsInsidePolygon() {
+
+        List<Collider2D> coll = new List<Collider2D>();
+        int colliderCount = pc.OverlapCollider(contactFilter, coll);
+        List<GameObject> inside = new List<GameObject>();
+        foreach (var c in coll) {
+            var p = c.transform.position;
+            if (BallInside(p))
+                inside.Add(c.gameObject);
         }
+        print(" ball is touching polygon collider " + colliderCount);
+        return inside;
     }
-}
+
+    bool BallInside(Vector2 position) {
+        // check all offsets, return false if any outside the polygon collider
+        for (int i = 0; i < offsets.Count; i++) {
+            var test = pc.OverlapPoint(position + offsets[i]);
+            if (!test)
+                return false; 
+           // print("offsets" + offsets[i]);
+        }
+        return true;
+    }
+
+    private void FixedUpdate() {
+        var results = BallsInsidePolygon();
+        ballsInside = results.Count;
+        print("koko pallo sisiällä " + ballsInside); 
+    }
+
+
+} // class
