@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class InsideOfPolygonCollider : MonoBehaviour
 {
-
     public int ballsInside;
     PolygonCollider2D pc;
 
@@ -12,17 +11,15 @@ public class InsideOfPolygonCollider : MonoBehaviour
     private ContactFilter2D contactFilter;
 
     List<Vector2> offsets = new List<Vector2>();
-
     void Start() {
 
         pc = GetComponent<PolygonCollider2D>();
         //offsets = new List<Vector2> { Vector2.up * 0.5f, Vector2.right * 0.5f, Vector2.down * 0.5f, Vector2.left * 0.5f };
         for (int i = 0; i < 6; i++) {
             offsets.Add(new Vector2(0 + 0.5f * Mathf.Cos((i * 60) * (Mathf.PI / 180)), 0 + 0.5f * Mathf.Sin((i * 60) * (Mathf.PI / 180))));
+            // offset ns. siirros. Kuinka paljon siirtyy keskipisteestä tiettyyn suuntaan. Katsotaan 6 siirrosta ympyrän kehältä kun radius (säde) on 0.5
         }
-
     }
-
     public List<GameObject> BallsInsidePolygon() {
 
         List<Collider2D> coll = new List<Collider2D>();
@@ -47,12 +44,10 @@ public class InsideOfPolygonCollider : MonoBehaviour
         }
         return true;
     }
-
     private void FixedUpdate() {
         var results = BallsInsidePolygon();
         ballsInside = results.Count;
         print("koko pallo sisiällä " + ballsInside); 
     }
-
 
 } // class
