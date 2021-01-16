@@ -4,21 +4,31 @@ using UnityEngine;
 
 public class BallAutomaticMoving : MonoBehaviour
 {
-    Rigidbody2D rb;
-    public Vector2 launchDirection;
+    Rigidbody rb;
+    public Vector3 launchDirection;
     public float speed;
     public float minAngle = 30f;
     public bool goingUp = true;
     public Vector3 startingPosition;
 
+    Vector3 lastVelocity; 
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); 
+        rb = GetComponent<Rigidbody>(); 
         rb.velocity = launchDirection.normalized * speed; // normalized flattens the vector to 1, so it doesn't go faster for example 
     }
 
-    void OnCollisionExit2D(Collision2D collision) {
+
+    private void OnCollisionEnter(Collision collision) {
+        var speed = lastVelocity.magnitude;
+        var direction = Vector3.Reflect(lastVelocity.normalized, collision.contacts[0].normal);
+
+        rb.velocity = direction * Mathf.Max(speed, 0f);
+    }
+
+
+    /*void OnCollisionExit(Collision collision) {
         var rotClockwise = Quaternion.AngleAxis(-minAngle, Vector3.forward); // we rotate minAngle to 
         var rotCounterClockwise = Quaternion.AngleAxis(minAngle, Vector3.forward); // we rotate minAngle to counterclockwise 
         var newVelocity = rb.velocity.normalized * speed;
@@ -52,9 +62,11 @@ public class BallAutomaticMoving : MonoBehaviour
 
         // we will reset velocity, if it loses speed in collisons
         rb.velocity = newVelocity; // we only set new velocity once at the end
-    }
-    // Update is called once per frame
+    } */
+    
+
     void FixedUpdate() {
+        lastVelocity = rb.velocity;
 
         goingUp = rb.velocity.y > 0;
 
