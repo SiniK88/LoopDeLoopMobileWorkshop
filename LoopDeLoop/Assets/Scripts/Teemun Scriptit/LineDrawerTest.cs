@@ -6,6 +6,7 @@ public class LineDrawerTest : MonoBehaviour {
 
     LineRenderer lineRenderer;
     Vector3 mousePos;
+    PolygonCollider2D polyCollider;
     public GameObject drawingPrefab;
 
     void Update() {
@@ -20,6 +21,9 @@ public class LineDrawerTest : MonoBehaviour {
             } 
         else if (Input.GetMouseButtonUp(0)) {
             lineRenderer.loop = true;
+            //polyCollider = lineRenderer.gameObject.AddComponent<PolygonCollider2D>();
+            //var drawing = drawingPrefab;
+            //drawing.AddComponent<PolygonCollider2D>();
             }
         }
 
