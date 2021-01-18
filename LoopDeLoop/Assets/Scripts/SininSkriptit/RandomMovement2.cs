@@ -8,7 +8,7 @@ public class RandomMovement2 : MonoBehaviour
     public float rotateSpeed = 5.0f;
 
     Vector3 newPosition;
-    bool isMoving = false;
+
     void Start() {
         PositionChange();
     }
@@ -16,10 +16,7 @@ public class RandomMovement2 : MonoBehaviour
     void PositionChange() {
         newPosition = new Vector3(Random.Range(-2.1f, 2.1f), Random.Range(-4.0f, 5.6f),0);
 
-        if (newPosition.x > transform.position.x)
-            transform.localScale = new Vector3(-1, 1, 1);
-        else
-            transform.localScale = Vector3.one;
+;
     }
 
     void Update() {

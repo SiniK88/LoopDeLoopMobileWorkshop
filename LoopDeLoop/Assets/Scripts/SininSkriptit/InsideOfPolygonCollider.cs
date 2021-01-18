@@ -8,7 +8,7 @@ public class InsideOfPolygonCollider : MonoBehaviour
     PolygonCollider2D pc;
 
     [SerializeField]
-    private ContactFilter2D contactFilter;
+    private ContactFilter2D contactFilter; // A set of parameters for filtering contact results. Mitk‰ kontaktitavat huomioidaan, tyyliin layermask tai trigger. 
 
     List<Vector2> offsets = new List<Vector2>();
     void Start() {
@@ -22,13 +22,13 @@ public class InsideOfPolygonCollider : MonoBehaviour
     }
     public List<GameObject> BallsInsidePolygon() {
 
-        List<Collider2D> coll = new List<Collider2D>();
-        int colliderCount = pc.OverlapCollider(contactFilter, coll);
-        List<GameObject> inside = new List<GameObject>();
-        foreach (var c in coll) {
+        List<Collider2D> coll = new List<Collider2D>(); // lista jossa collider2D juttuja
+        int colliderCount = pc.OverlapCollider(contactFilter, coll);  // overlapcollider = Get a list of all colliders that overlap this collider. Kaikki colliderit jotka osuu polygoncollideriin
+        List<GameObject> inside = new List<GameObject>(); // uusi lista niille GameObjecteille jotka ovat sis‰ll‰
+        foreach (var c in coll) { // k‰yd‰‰ l‰pi jokainen collider joka osuu polygoncollideriin ja katsotaan sen paikka
             var p = c.transform.position;
             if (BallInside(p))
-                inside.Add(c.gameObject);
+                inside.Add(c.gameObject); // laitetaan kaikki ne gameobjectit inside listan sis‰‰n joissa jokainen piste osui pc:iin
         }
         print(" ball is touching polygon collider " + colliderCount);
         return inside;
@@ -36,11 +36,10 @@ public class InsideOfPolygonCollider : MonoBehaviour
 
     bool BallInside(Vector2 position) {
         // check all offsets, return false if any outside the polygon collider
-        for (int i = 0; i < offsets.Count; i++) {
-            var test = pc.OverlapPoint(position + offsets[i]);
-            if (!test)
+        for (int i = 0; i < offsets.Count; i++) { 
+            var test = pc.OverlapPoint(position + offsets[i]); // testataan jos polygon collideriin osuvan colliderin keskipisteest‰ suuntiin offsets[i] kaikki pisteet osuvat. Silloin tru
+            if (!test) // jos yksik‰‰n piste ei osu niin palautetaan false
                 return false; 
-           // print("offsets" + offsets[i]);
         }
         return true;
     }

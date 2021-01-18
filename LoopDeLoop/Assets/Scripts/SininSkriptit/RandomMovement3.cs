@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class RandomMovement3 : MonoBehaviour
 {
-    public float accelerationTime = 2f;
+    public float waitingTime = 2f;
     public float maxSpeed = 1f;
     private Vector3 movement;
-    private float timeLeft;
+    private float timeStart = 0;
     Rigidbody rb;
 
     private void Start() {
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update() {
-        timeLeft -= Time.deltaTime;
-        if (timeLeft <= 0) {
-            movement = new Vector3(Random.Range(-2f, 3f), Random.Range(-2f, 3f),0);
-            timeLeft += accelerationTime;
+    void Update() { // Update runs once per frame
+        timeStart -= Time.deltaTime; // vähennetään time.deltatime joka framella kunnes se on pienempi kuin 0
+        if (timeStart <= 0) {
+            movement = new Vector3(Random.Range(-2f, 3f), Random.Range(-2f, 3f),0); // random Alue jolla pallo voi liikkua
+            timeStart += waitingTime;  // lisätään waitingTime timeStart kohtaan, niin että hakee aina uuden random vector3 pisteen 2 sekunnin välein
         }
     }
 
-    void FixedUpdate() {
-        rb.AddForce(movement * maxSpeed);
+    void FixedUpdate() { //  FixedUpdate can run once, zero, or several times per frame. exactly in sync with the physics engine itself
+        rb.AddForce(movement * maxSpeed); //  object will be accelerated by the force. Antaa siis ns. voimaa siihen suuntaan missä "movement" piste on
     }
 }
