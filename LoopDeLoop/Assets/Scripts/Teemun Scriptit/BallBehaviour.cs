@@ -14,6 +14,8 @@ public class BallBehaviour : MonoBehaviour {
     public int dirSelector;
     public int colourSelector;
     public float speed;
+    public float minAngle = 45f;
+    public bool goingUp = true;
     public BallColour ballColour;
     public Material[] materials;
 
@@ -59,6 +61,35 @@ public class BallBehaviour : MonoBehaviour {
                 rend.material = materials[2];
                 }
             }
+        }
+
+    void FixedUpdate() {
+        goingUp = ballRb.velocity.y > 0;
+        }
+
+    void OnCollisionExit2D(Collision2D collision) {
+        var rotClockwise = Quaternion.AngleAxis(-minAngle, Vector3.forward);
+        var rotCounterclockwise = Quaternion.AngleAxis(minAngle, Vector3.forward);
+
+        var newVelocity = ballRb.velocity.normalized * speed;
+
+        //Left angle fix
+        if(Vector3.Angle(ballRb.velocity, Vector3.left) < minAngle) {
+            Debug.Log("Bounced too horizontally to left");
+            if (goingUp) {
+                Debug.Log("Fix velocity to minAngle left and up");
+                var newDir = rotClockwise * Vector3.left;
+                newVelocity = newDir * speed;
+                }
+            }
+
+        //Right angle fix
+        if(Vector3.Angle(ballRb.velocity, Vector3.right) < minAngle) {
+            Debug.Log("Bounced too horizontally to right");
+            }
+
+        //Speed after collisions
+        ballRb.velocity = newVelocity;
 
         }
     }

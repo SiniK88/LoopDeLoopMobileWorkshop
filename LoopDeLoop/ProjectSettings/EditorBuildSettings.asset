@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Teemun Scene.unity
+    guid: e76cb4cfa140d4e499579a4b35a89d64
   m_configObjects: {}
