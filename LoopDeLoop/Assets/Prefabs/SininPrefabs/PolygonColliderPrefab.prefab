@@ -170,5 +170,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f913c7aaef7952444a08dcc1fc97005e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  polygonCollider: {fileID: 7182924051869278359}
+  drawManager: {fileID: 0}
   polygonPoints: []

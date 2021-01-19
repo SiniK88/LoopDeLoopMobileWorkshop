@@ -21,7 +21,7 @@ public class UpdatePolygonCollider : MonoBehaviour
         //var numberOfPoints = polygonCollider.GetTotalPointCount();
 
         drawManager = GetComponent<DrawingManager1>();
-
+        
         //polygonCollider.SetPath(0, polygonPoints);
         // this sets path of 0, points (vector2) to be what is in the list "polygonPoints. 
 

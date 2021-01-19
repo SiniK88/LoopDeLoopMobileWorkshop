@@ -46,6 +46,13 @@ public class InsideOfPolygonCollider : MonoBehaviour
     private void FixedUpdate() {
         var results = BallsInsidePolygon();
         ballsInside = results.Count;
+
+        if(results.Count >= 1) {
+            
+            print("tässä pitäisi tuhota pallo " + results[0]);
+            Destroy(results[0].transform.parent.gameObject);
+        }
+
         print("koko pallo sisiällä " + ballsInside); 
     }
 
