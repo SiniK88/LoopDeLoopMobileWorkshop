@@ -176,7 +176,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222448586}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f006d9db611908e44afb3635bf40f766, type: 3}
   m_Name: 
@@ -291,13 +291,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222448586}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52ac1ca8b02be0b408d378817ab1eeae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linePos: []
+  linePositions: []
   drawPrefab: {fileID: 8983551911741102879, guid: 07a4533270492ad448d09b0931575e3f, type: 3}
+  minDistance: 0.2
 --- !u!1 &2021168787
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,6 +503,10 @@ PrefabInstance:
     - target: {fileID: 8614090042660872990, guid: 2961dbd2f53292b449f504322dcd469f, type: 3}
       propertyPath: m_Name
       value: Ball Spawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 8614090042660872990, guid: 2961dbd2f53292b449f504322dcd469f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2961dbd2f53292b449f504322dcd469f, type: 3}

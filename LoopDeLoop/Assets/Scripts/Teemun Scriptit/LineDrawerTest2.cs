@@ -4,37 +4,43 @@ using UnityEngine;
 
 public class LineDrawerTest2 : MonoBehaviour {
     LineRenderer lr;
-    public List<Vector2> linePos = new List<Vector2>();
+    public List<Vector3> linePositions = new List<Vector3>();
     Vector3 mousePos;
     public GameObject drawPrefab;
-    
+    public float minDistance = 0.2f;
+
+
     void Start() {
-        lr = drawPrefab.GetComponent<LineRenderer>();
+        var drawing = Instantiate(drawPrefab);
+        lr = drawing.GetComponent<LineRenderer>();
         }
 
     void Update() {
-        mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f);
-        lr.positionCount = linePos.Count;
+        //mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.4f);
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
 
         if (Input.GetMouseButtonDown(0)) {
-            var drawing = Instantiate(drawPrefab);
-            linePos.Add(mousePos);
-            //print(linePos.IndexOf(mousePos));
+            linePositions.Clear();
+            lr.SetPositions(new Vector3[] { });
+            AddPoint();
             }
 
         if (Input.GetMouseButton(0)) {
-            Line();
-            }
-        else if (Input.GetMouseButtonUp(0)) {
-            lr.loop = true;
+            if (Vector3.Distance(mousePos, linePositions[linePositions.Count - 1]) > minDistance) {
+                AddPoint();
+                }
+            } else if (Input.GetMouseButtonUp(0)) {
+            //lr.loop = true;
+            //linePositions.Clear();
 
             }
 
-        void Line() {
-            lr.startWidth = 0.1f;
-            lr.endWidth = 0.1f;
-            linePos.Add(mousePos);
-            lr.SetPosition(linePos.IndexOf(mousePos) -1, Camera.main.ScreenToWorldPoint(mousePos));
+        void AddPoint() {
+            linePositions.Add(mousePos);
+            lr.positionCount = linePositions.Count; //pisteiden koko m‰‰r‰
+            Vector3 lastPoint = linePositions[linePositions.Count - 1]; // Viimeinen listan piste
+            lr.SetPosition(lr.positionCount - 1, lastPoint);
             }
 
         }
