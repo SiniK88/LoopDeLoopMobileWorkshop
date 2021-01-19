@@ -10,11 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 190625227448383688}
   - component: {fileID: 1935049446729117748}
-  - component: {fileID: 4142066934522272504}
-  - component: {fileID: 4965896815482688411}
+  - component: {fileID: 4988436608858900349}
+  - component: {fileID: 7429068728832048906}
+  - component: {fileID: 3049985126337879723}
   m_Layer: 0
   m_Name: DrawingPrefab1
-  m_TagString: Drawing
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +74,8 @@ LineRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Positions: []
+  m_Positions:
+  - {x: 0.19, y: 4.2, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -81,8 +83,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 1
+        time: 0.0033569336
+        value: 0.10852814
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -129,7 +131,7 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!60 &4142066934522272504
+--- !u!60 &4988436608858900349
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,9 +156,23 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 3.59, y: 0.5}
-      - {x: 3.57, y: -0.16}
---- !u!114 &4965896815482688411
+    - - {x: 3.68, y: 4.7}
+      - {x: 3.57, y: 3.98}
+--- !u!114 &7429068728832048906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7193312581718264828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f913c7aaef7952444a08dcc1fc97005e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  polygonPoints2D: []
+  linePositions: []
+--- !u!114 &3049985126337879723
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

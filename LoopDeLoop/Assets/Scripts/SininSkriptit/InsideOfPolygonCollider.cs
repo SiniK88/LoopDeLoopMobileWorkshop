@@ -11,6 +11,7 @@ public class InsideOfPolygonCollider : MonoBehaviour
     private ContactFilter2D contactFilter; // A set of parameters for filtering contact results. Mitkä kontaktitavat huomioidaan, tyyliin layermask tai trigger. 
 
     List<Vector2> offsets = new List<Vector2>();
+    BallColour2 ballColour2;
     void Start() {
 
         pc = GetComponent<PolygonCollider2D>();
@@ -19,6 +20,8 @@ public class InsideOfPolygonCollider : MonoBehaviour
             offsets.Add(new Vector2(0 + 0.5f * Mathf.Cos((i * 60) * (Mathf.PI / 180)), 0 + 0.5f * Mathf.Sin((i * 60) * (Mathf.PI / 180))));
             // offset ns. siirros. Kuinka paljon siirtyy keskipisteestä tiettyyn suuntaan. Katsotaan 6 siirrosta ympyrän kehältä kun radius (säde) on 0.5
         }
+
+   
     }
     public List<GameObject> BallsInsidePolygon() {
 
@@ -47,13 +50,23 @@ public class InsideOfPolygonCollider : MonoBehaviour
         var results = BallsInsidePolygon();
         ballsInside = results.Count;
 
-        if(results.Count >= 1) {
-            
-            print("tässä pitäisi tuhota pallo " + results[0]);
-            Destroy(results[0].transform.parent.gameObject);
+        if (results.Count >= 2 ) {
+            //var ballBehav = results[0].GetComponent<BallBehaviourRandomMoving>();
+            //var colorselector = ballBehav.colourSelector;
+            //print(colorselector);
+
+            for (int i = 0; i < results.Count; i++) {
+
+                print("tässä pitäisi tuhota pallo " + results[i]);
+            Destroy(results[i].transform.parent.gameObject);
+            }
         }
 
-        print("koko pallo sisiällä " + ballsInside); 
+
+        print("koko pallo sisiällä " + ballsInside);
+
     }
+
+
 
 } // class

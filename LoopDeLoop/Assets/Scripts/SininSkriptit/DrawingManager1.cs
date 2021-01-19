@@ -64,8 +64,7 @@ public class DrawingManager1 : MonoBehaviour {
                 } */ 
 
                 if (drawnLinesPosEnd.Count == lineRenderer.positionCount) {
-                    circleDrawn = true;
-                    print(circleDrawn);
+
                     polygonCollider.SetPath(0, pos2);
                 }
             }
