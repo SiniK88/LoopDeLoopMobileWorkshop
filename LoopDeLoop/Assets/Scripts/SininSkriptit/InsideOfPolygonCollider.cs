@@ -50,6 +50,7 @@ public class InsideOfPolygonCollider : MonoBehaviour
         var results = BallsInsidePolygon();
         ballsInside = results.Count;
 
+
         if (results.Count >= 2 ) {
             //var ballBehav = results[0].GetComponent<BallBehaviourRandomMoving>();
             //var colorselector = ballBehav.colourSelector;

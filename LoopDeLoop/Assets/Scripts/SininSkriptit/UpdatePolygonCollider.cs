@@ -34,7 +34,7 @@ public class UpdatePolygonCollider : MonoBehaviour
     {
         lr = gameObject.GetComponent<LineRenderer>();
         if(lr.loop == true ) {
-            print(" line renrederer loop true ");
+            //print(" line renrederer loop true ");
 
             Vector2[] pos2 = new Vector2[lr.positionCount];
             for (int i = 0; i < lr.positionCount; i++) {
@@ -43,7 +43,6 @@ public class UpdatePolygonCollider : MonoBehaviour
                 //print(pos2[i]);
             }
 
-            print("alue piirretty, toivottavasti");
             polygonCollider.SetPath(0, pos2);
         }
     }

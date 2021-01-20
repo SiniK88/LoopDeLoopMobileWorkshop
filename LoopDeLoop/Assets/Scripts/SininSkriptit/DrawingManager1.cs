@@ -78,13 +78,6 @@ public class DrawingManager1 : MonoBehaviour {
         lineRenderer.SetPosition(lineRenderer.positionCount - 1, Camera.main.ScreenToWorldPoint(mousePos));
     }
 
-    private void ClearAllPoints() {
 
 
-        //GameObject[] allPoints = GameObject.FindGameObjectsWithTag("Drawing");
-        //for( var i = 0; i < allPoints.Length; i++) {
-        //    Destroy(allPoints[i]);
-        //    LineRExists = false;
-        //}
-    }
 }
