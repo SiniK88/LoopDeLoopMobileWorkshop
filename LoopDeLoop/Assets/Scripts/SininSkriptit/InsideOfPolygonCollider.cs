@@ -50,27 +50,33 @@ public class InsideOfPolygonCollider : MonoBehaviour
         var results = BallsInsidePolygon();
         ballsInside = results.Count;
 
-        if (results.Count >= 1 ) {
-            var ballBehav = results[0].GetComponent<BallProperties>();
-
-            //print(" jotain " + colorselector);
+        var ballCheckResults = BallsCheck(results);
+        print(" kaksi samanväristä palloa " + ballCheckResults);
+        if (ballCheckResults == true ) {
 
             for (int i = 0; i < results.Count; i++) {
 
                 print("tässä pitäisi tuhota pallo " + results[i]);
                 //Destroy(results[i].transform.parent.gameObject);
                 Destroy(results[i].gameObject);
-
             }
         }
-
         print("koko pallo sisiällä " + ballsInside);
 
     }
 
-   /* bool BallsCheck (List<BallProperties> lista) {
+    bool BallsCheck (List<BallProperties> lista) {
+        if(lista.Count >= 2) {
+            var hh = (int)lista[0].ballColour;
+            for( int i = 1; i < lista.Count; i++) {
+                if( (int)lista[i].ballColour == hh) {
+                    return true;
+                }
+            }
+        }
+        return false;
    // katso onko palloja oikea määrä ja että ne ovat samaa väriä. Jos vaikka tasan 3 palloa. Katso onko kolme palloa
-   sitten esim. ekan pallon väri talteen muuttujaan, loopataan läpi. Jos yksikin pallo oli väärin, palauttaa falsen
-    }*/
+   //sitten esim. ekan pallon väri talteen muuttujaan, loopataan läpi. Jos yksikin pallo oli väärin, palauttaa falsen
+    }
 
 } // class

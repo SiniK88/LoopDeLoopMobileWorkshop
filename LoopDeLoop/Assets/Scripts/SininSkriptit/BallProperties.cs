@@ -14,11 +14,13 @@ public class BallProperties : MonoBehaviour
     void Start()
     {
         rend = GetComponent<MeshRenderer>();
-        rend.material = materials[(int)ballColour];
+        
 
         if(randomBool == true) {
             ballColour = (BallColour2) Random.Range(0, System.Enum.GetValues(typeof(BallColour2)).Length);
         }
+
+        rend.material = materials[(int)ballColour];
     }
     //System.Enum.GetValues(typeof(Enemy)).Length
 
