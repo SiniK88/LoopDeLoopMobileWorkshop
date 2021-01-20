@@ -21,6 +21,8 @@ public class BallBehaviourRandomMoving : MonoBehaviour
     private Vector3 movement;
     private float timeStart = 0;
 
+    public float MaxVelocity = 0.5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,5 +76,7 @@ public class BallBehaviourRandomMoving : MonoBehaviour
 
     void FixedUpdate() { //  FixedUpdate can run once, zero, or several times per frame. exactly in sync with the physics engine itself
         ballRb.AddForce(movement * maxSpeed); //  object will be accelerated by the force. Antaa siis ns. voimaa siihen suuntaan missä "movement" piste on
+        ballRb.velocity = Vector3.ClampMagnitude(  ballRb.velocity, MaxVelocity);
+
     }
 }

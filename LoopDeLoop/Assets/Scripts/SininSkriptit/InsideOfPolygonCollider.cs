@@ -33,7 +33,7 @@ public class InsideOfPolygonCollider : MonoBehaviour
             if (BallInside(p))
                 inside.Add(c.GetComponent<BallProperties>()); // laitetaan kaikki ne gameobjectit inside listan sis‰‰n joissa jokainen piste osui pc:iin
         }
-        print(" ball is touching polygon collider " + colliderCount);
+        //print(" ball is touching polygon collider " + colliderCount);
         return inside;
     }
 
@@ -49,9 +49,9 @@ public class InsideOfPolygonCollider : MonoBehaviour
     private void FixedUpdate() {
         var results = BallsInsidePolygon();
         ballsInside = results.Count;
-
+        print("palloja sis‰ll‰" + ballsInside);
         var ballCheckResults = BallsCheck(results);
-        print(" kaksi samanv‰rist‰ palloa " + ballCheckResults);
+        print("ball check result" + ballCheckResults);
         if (ballCheckResults == true ) {
 
             for (int i = 0; i < results.Count; i++) {
@@ -61,14 +61,13 @@ public class InsideOfPolygonCollider : MonoBehaviour
                 Destroy(results[i].gameObject);
             }
         }
-        print("koko pallo sisi‰ll‰ " + ballsInside);
 
     }
 
     bool BallsCheck (List<BallProperties> lista) {
-        if(lista.Count >= 2) {
+        if(lista.Count >= 1) {
             var hh = (int)lista[0].ballColour;
-            for( int i = 1; i < lista.Count; i++) {
+            for( int i = 0; i < lista.Count; i++) {
                 if( (int)lista[i].ballColour == hh) {
                     return true;
                 }

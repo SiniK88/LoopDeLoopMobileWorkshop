@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 7429068728832048906}
   - component: {fileID: 3049985126337879723}
   - component: {fileID: 3039778242869701342}
+  - component: {fileID: 4785075501773630588}
   m_Layer: 0
   m_Name: DrawingPrefab1
   m_TagString: Untagged
@@ -266,3 +267,17 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &4785075501773630588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7193312581718264828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e609eb8f8fc499d479b0370f68294072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linePositions: []
+  Points2d: []
