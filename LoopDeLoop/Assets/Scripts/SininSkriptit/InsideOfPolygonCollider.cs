@@ -11,7 +11,7 @@ public class InsideOfPolygonCollider : MonoBehaviour
     private ContactFilter2D contactFilter; // A set of parameters for filtering contact results. Mitk‰ kontaktitavat huomioidaan, tyyliin layermask tai trigger. 
 
     List<Vector2> offsets = new List<Vector2>();
-    BallColour2 ballColour2;
+
     void Start() {
 
         pc = GetComponent<PolygonCollider2D>();
@@ -23,15 +23,15 @@ public class InsideOfPolygonCollider : MonoBehaviour
 
    
     }
-    public List<GameObject> BallsInsidePolygon() {
+    public List<BallProperties> BallsInsidePolygon() {
 
         List<Collider2D> coll = new List<Collider2D>(); // lista jossa collider2D juttuja
         int colliderCount = pc.OverlapCollider(contactFilter, coll);  // overlapcollider = Get a list of all colliders that overlap this collider. Kaikki colliderit jotka osuu polygoncollideriin
-        List<GameObject> inside = new List<GameObject>(); // uusi lista niille GameObjecteille jotka ovat sis‰ll‰
+        List<BallProperties> inside = new List<BallProperties>(); // uusi lista niille GameObjecteille jotka ovat sis‰ll‰
         foreach (var c in coll) { // k‰yd‰‰ l‰pi jokainen collider joka osuu polygoncollideriin ja katsotaan sen paikka
             var p = c.transform.position;
             if (BallInside(p))
-                inside.Add(c.gameObject); // laitetaan kaikki ne gameobjectit inside listan sis‰‰n joissa jokainen piste osui pc:iin
+                inside.Add(c.GetComponent<BallProperties>()); // laitetaan kaikki ne gameobjectit inside listan sis‰‰n joissa jokainen piste osui pc:iin
         }
         print(" ball is touching polygon collider " + colliderCount);
         return inside;
@@ -50,24 +50,27 @@ public class InsideOfPolygonCollider : MonoBehaviour
         var results = BallsInsidePolygon();
         ballsInside = results.Count;
 
+        if (results.Count >= 1 ) {
+            var ballBehav = results[0].GetComponent<BallProperties>();
 
-        if (results.Count >= 2 ) {
-            //var ballBehav = results[0].GetComponent<BallBehaviourRandomMoving>();
-            //var colorselector = ballBehav.colourSelector;
-            //print(colorselector);
+            //print(" jotain " + colorselector);
 
             for (int i = 0; i < results.Count; i++) {
 
                 print("t‰ss‰ pit‰isi tuhota pallo " + results[i]);
-            Destroy(results[i].transform.parent.gameObject);
+                //Destroy(results[i].transform.parent.gameObject);
+                Destroy(results[i].gameObject);
+
             }
         }
-
 
         print("koko pallo sisi‰ll‰ " + ballsInside);
 
     }
 
-
+   /* bool BallsCheck (List<BallProperties> lista) {
+   // katso onko palloja oikea m‰‰r‰ ja ett‰ ne ovat samaa v‰ri‰. Jos vaikka tasan 3 palloa. Katso onko kolme palloa
+   sitten esim. ekan pallon v‰ri talteen muuttujaan, loopataan l‰pi. Jos yksikin pallo oli v‰‰rin, palauttaa falsen
+    }*/
 
 } // class

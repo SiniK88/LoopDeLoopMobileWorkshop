@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum BallColour2 { Blue, Red, Yellow };
+
 public class BallBehaviourRandomMoving : MonoBehaviour
 {
-    Rigidbody ballRb;
+    Rigidbody2D ballRb;
     Renderer rend;
     Vector2 launchDir1 = new Vector2(1f, 1f); //Oikea yläviisto
     Vector2 laucnhDir2 = new Vector2(-1f, -1f); //Vasen alaviisto
@@ -15,8 +15,7 @@ public class BallBehaviourRandomMoving : MonoBehaviour
     public int dirSelector;
     public int colourSelector;
     public float speed;
-    public BallColour2 ballColour;
-    public Material[] materials;
+
     public float waitingTime = 2f;
     public float maxSpeed = 1f;
     private Vector3 movement;
@@ -27,7 +26,7 @@ public class BallBehaviourRandomMoving : MonoBehaviour
     {
         dirSelector = Random.Range(0, 4);
         colourSelector = Random.Range(0, 3);
-        ballRb = GetComponent<Rigidbody>();
+        ballRb = GetComponent<Rigidbody2D>();
         rend = GetComponent<Renderer>();
 
         //Randomise launch direction per ball
@@ -45,7 +44,7 @@ public class BallBehaviourRandomMoving : MonoBehaviour
         ballRb.velocity = finalDir.normalized * speed;
 
         // Väri randomiser
-        if (colourSelector == 0) {
+        /*if (colourSelector == 0) {
             ballColour = BallColour2.Blue;
             if (ballColour == BallColour2.Blue) {
                 rend.material = materials[0];
@@ -60,7 +59,7 @@ public class BallBehaviourRandomMoving : MonoBehaviour
             if (ballColour == BallColour2.Yellow) {
                 rend.material = materials[2];
             }
-        }
+        }*/
 
 
     }
