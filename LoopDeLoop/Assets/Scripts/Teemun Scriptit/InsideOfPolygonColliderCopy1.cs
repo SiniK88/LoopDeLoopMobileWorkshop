@@ -11,9 +11,7 @@ public class InsideOfPolygonColliderCopy1 : MonoBehaviour
     private ContactFilter2D contactFilter; // A set of parameters for filtering contact results. Mitkä kontaktitavat huomioidaan, tyyliin layermask tai trigger. 
 
     List<Vector2> offsets = new List<Vector2>();
-    BallColour2 ballColour2;
     void Start() {
-
         pc = GetComponent<PolygonCollider2D>();
         //offsets = new List<Vector2> { Vector2.up * 0.5f, Vector2.right * 0.5f, Vector2.down * 0.5f, Vector2.left * 0.5f };
         for (int i = 0; i < 6; i++) {
@@ -46,21 +44,34 @@ public class InsideOfPolygonColliderCopy1 : MonoBehaviour
             }
         return true;
         }
+
     private void FixedUpdate() {
         var results = BallsInsidePolygon();
         ballsInside = results.Count;
+        //ball = GameObject.FindGameObjectWithTag("Ball1");
+        //ballMover = ball.GetComponent<BallBehaviourRandomMovingCopy1>();
 
         if (results.Count >= 2) {
+            foreach (var result in results) {
+                var ball = result;
+                var tags = GameObject.FindGameObjectWithTag("Ball1");
+                //ball.GetComponent<BallBehaviourRandomMovingCopy1>();
+                    for (int i = 0; i < results.Count; i++) {
+
+                        print("tässä pitäisi tuhota pallo " + results[i]);
+                        Destroy(results[i].transform.parent.gameObject);
+                        }
+                }
             //var ballBehav = results[0].GetComponent<BallBehaviourRandomMoving>();
             //var colorselector = ballBehav.colourSelector;
             //print(colorselector);
 
-            for (int i = 0; i < results.Count; i++) {
+            //for (int i = 0; i < results.Count; i++) {
 
-                print("tässä pitäisi tuhota pallo " + results[i]);
-                Destroy(results[i].transform.parent.gameObject);
-                }
-            }
+            //    print("tässä pitäisi tuhota pallo " + results[i]);
+            //    Destroy(results[i].transform.parent.gameObject);
+            //    }
+            } 
 
 
         print("koko pallo sisiällä " + ballsInside);

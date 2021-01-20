@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8962657597682469944}
   - component: {fileID: 8320861280571933227}
   - component: {fileID: 8747886851672186409}
-  - component: {fileID: 59906580840183982}
+  - component: {fileID: -7978482869973796549}
   m_Layer: 7
   m_Name: SphereMovingRandomTestiKopio
   m_TagString: Ball1
@@ -114,7 +114,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &59906580840183982
+--- !u!114 &-7978482869973796549
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1469330337393420484}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4fbd1e76484f664e98a1e7403af860c, type: 3}
+  m_Script: {fileID: 11500000, guid: f78595a2414569043a9eb74fd0722658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dirSelector: 0

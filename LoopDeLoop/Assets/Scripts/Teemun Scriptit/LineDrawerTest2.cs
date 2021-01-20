@@ -8,6 +8,7 @@ public class LineDrawerTest2 : MonoBehaviour {
     Vector3 mousePos;
     public GameObject drawPrefab;
     public float minDistance = 0.2f;
+    public bool circleDrawn = false;
 
 
     void Start() {
@@ -21,6 +22,8 @@ public class LineDrawerTest2 : MonoBehaviour {
         mousePos.z = 0;
 
         if (Input.GetMouseButtonDown(0)) {
+            lr.loop = false;
+            circleDrawn = false;
             linePositions.Clear();
             lr.SetPositions(new Vector3[] { });
             AddPoint();
@@ -31,7 +34,8 @@ public class LineDrawerTest2 : MonoBehaviour {
                 AddPoint();
                 }
             } else if (Input.GetMouseButtonUp(0)) {
-            //lr.loop = true;
+            lr.loop = true;
+            circleDrawn = true;
             //linePositions.Clear();
 
             }

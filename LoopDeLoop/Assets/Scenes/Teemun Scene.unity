@@ -299,6 +299,28 @@ MonoBehaviour:
   linePositions: []
   drawPrefab: {fileID: 8983551911741102879, guid: 07a4533270492ad448d09b0931575e3f, type: 3}
   minDistance: 0.2
+  circleDrawn: 0
+--- !u!1 &1328810015 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4180256048589224443, guid: 1d9494d5ec5475d4e8d22f6f3ba710d9, type: 3}
+  m_PrefabInstance: {fileID: 4180256048243002634}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1328810016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328810015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52ac1ca8b02be0b408d378817ab1eeae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linePositions: []
+  drawPrefab: {fileID: 4915776755483931470, guid: a719d09bc9a6e07409c835a438670ad3, type: 3}
+  minDistance: 0.2
+  circleDrawn: 0
 --- !u!1 &2021168787
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,6 +596,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4180256048589224440, guid: 1d9494d5ec5475d4e8d22f6f3ba710d9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4180256048589224443, guid: 1d9494d5ec5475d4e8d22f6f3ba710d9, type: 3}
       propertyPath: m_Name
       value: DrawManager 2
@@ -622,7 +648,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4180256048589224440, guid: 1d9494d5ec5475d4e8d22f6f3ba710d9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1d9494d5ec5475d4e8d22f6f3ba710d9, type: 3}
 --- !u!1001 &8614090043502097881
 PrefabInstance:
