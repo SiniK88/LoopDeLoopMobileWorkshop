@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CollisionToLines : MonoBehaviour
 {
-    LineRenderer lr;
+    /*LineRenderer lr;
     public List<Vector3> linePositions = new List<Vector3>();
     Vector3 mousePos;
     public List<Vector2> Points2d;
@@ -29,10 +29,10 @@ public class CollisionToLines : MonoBehaviour
     }
 
     private void Update() {
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = 0;
+        //mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //mousePos.z = 0;
 
-        Vector2 mousepos2d = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    }
-
+        //Vector2 mousepos2d = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }*/
+    
 }

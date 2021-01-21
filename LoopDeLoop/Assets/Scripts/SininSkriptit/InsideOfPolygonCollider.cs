@@ -17,7 +17,7 @@ public class InsideOfPolygonCollider : MonoBehaviour
         pc = GetComponent<PolygonCollider2D>();
         //offsets = new List<Vector2> { Vector2.up * 0.5f, Vector2.right * 0.5f, Vector2.down * 0.5f, Vector2.left * 0.5f };
         for (int i = 0; i < 6; i++) {
-            offsets.Add(new Vector2(0 + 0.5f * Mathf.Cos((i * 60) * (Mathf.PI / 180)), 0 + 0.5f * Mathf.Sin((i * 60) * (Mathf.PI / 180))));
+            offsets.Add(new Vector2(0 + 0.3f * Mathf.Cos((i * 60) * (Mathf.PI / 180)), 0 + 0.3f * Mathf.Sin((i * 60) * (Mathf.PI / 180))));
             // offset ns. siirros. Kuinka paljon siirtyy keskipisteestä tiettyyn suuntaan. Katsotaan 6 siirrosta ympyrän kehältä kun radius (säde) on 0.5
         }
 
@@ -52,7 +52,7 @@ public class InsideOfPolygonCollider : MonoBehaviour
         print("palloja sisällä" + ballsInside);
         var ballCheckResults = BallsCheck(results);
         print("ball check result" + ballCheckResults);
-        if (ballCheckResults == true ) {
+        if (ballCheckResults == true && results.Count == 3 ) {
 
             for (int i = 0; i < results.Count; i++) {
 
@@ -65,13 +65,22 @@ public class InsideOfPolygonCollider : MonoBehaviour
     }
 
     bool BallsCheck (List<BallProperties> lista) {
-        if(lista.Count >= 1) {
-            var hh = (int)lista[0].ballColour;
-            for( int i = 0; i < lista.Count; i++) {
-                if( (int)lista[i].ballColour == hh) {
+        if(lista.Count == 3) {
+            var h1 = (int)lista[0].ballColour;
+            var h2 = (int)lista[1].ballColour;
+            var h3 = (int)lista[2].ballColour;
+
+            print(" mikä pallo sisällä numero 1" + h1);
+            print("mikä pallo sisällä numero 2" + h2);
+            print("mikä pallo sisällä numero 3" + h3);
+            if( (h1 == h2) && (h2 == h3)) {
+                return true;
+            }
+            /*for ( int i = 1; i < lista.Count; i++) {
+                if( (int)lista[i].ballColour == h1) {
                     return true;
                 }
-            }
+            }*/
         }
         return false;
    // katso onko palloja oikea määrä ja että ne ovat samaa väriä. Jos vaikka tasan 3 palloa. Katso onko kolme palloa

@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Teemun Scene.unity
     guid: e76cb4cfa140d4e499579a4b35a89d64
+  - enabled: 1
+    path: Assets/Scenes/SininScene.unity
+    guid: a90aa56770a7c9640bd2fbf37b2f696d
   m_configObjects: {}

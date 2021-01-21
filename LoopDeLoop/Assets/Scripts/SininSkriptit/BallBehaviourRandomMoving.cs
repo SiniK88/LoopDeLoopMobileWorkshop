@@ -21,7 +21,7 @@ public class BallBehaviourRandomMoving : MonoBehaviour
     private Vector3 movement;
     private float timeStart = 0;
 
-    public float MaxVelocity = 0.5f;
+    public float MaxVelocity = 0.7f;
 
     // Start is called before the first frame update
     void Start()
