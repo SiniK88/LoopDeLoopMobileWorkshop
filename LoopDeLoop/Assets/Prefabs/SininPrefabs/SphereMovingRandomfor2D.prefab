@@ -119,8 +119,8 @@ MonoBehaviour:
   colourSelector: 0
   speed: 0
   waitingTime: 2
-  maxSpeed: 0.6
-  MaxVelocity: 0.8
+  maxSpeed: 0.91
+  MaxVelocity: 0.98
 --- !u!50 &8717987099185277575
 Rigidbody2D:
   serializedVersion: 4
