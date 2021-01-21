@@ -53,7 +53,7 @@ public class InsideOfPolygonCollider : MonoBehaviour
         var ballCheckResults = BallsCheck(results);
         print("ball check result" + ballCheckResults);
         if (ballCheckResults == true && results.Count == 3 ) {
-
+            ScoreCounter.scoreValue += 3; 
             for (int i = 0; i < results.Count; i++) {
 
                 print("tässä pitäisi tuhota pallo " + results[i]);
