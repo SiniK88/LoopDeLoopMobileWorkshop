@@ -16,18 +16,27 @@ public class LineDrawer1 : MonoBehaviour
     public List<Vector2> Points2d;
     CollisionToLines collisionToLines;
     PolygonCollider2D pc;
-    List<Vector2> defaultPoints = new List<Vector2>() { new Vector2(6, 6), new Vector2(7, 7) }; 
+    List<Vector2> defaultPoints = new List<Vector2>() { new Vector2(6, 6), new Vector2(7, 7) };
+
+    float waitingTime = 1f;
+    float timer = 0;
 
     void Start() {
-        var drawing = Instantiate(drawPrefab);
+
+        lr = drawPrefab.GetComponent<LineRenderer>();
+        collisionToLines = drawPrefab.GetComponent<CollisionToLines>();
+
+        edgeCollider2D = drawPrefab.GetComponent<EdgeCollider2D>();
+        Points2d = new List<Vector2>();
+        pc = drawPrefab.GetComponent<PolygonCollider2D>();
+
+        /*var drawing = Instantiate(drawPrefab);
         lr = drawing.GetComponent<LineRenderer>();
         collisionToLines = drawing.GetComponent<CollisionToLines>();
 
         edgeCollider2D = drawing.GetComponent<EdgeCollider2D>();
         Points2d = new List<Vector2>();
-        pc = drawing.GetComponent<PolygonCollider2D>();
-
-        
+        pc = drawing.GetComponent<PolygonCollider2D>();*/
     }
 
 
@@ -39,6 +48,7 @@ public class LineDrawer1 : MonoBehaviour
         Vector2 mousepos2d = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         if (Input.GetMouseButtonDown(0)) {
+                lr.enabled = true;
                 circleDrawn = false;
                 lr.loop = false;
                 linePositions.Clear();
@@ -77,6 +87,13 @@ public class LineDrawer1 : MonoBehaviour
 
         if(lr.loop == true) {
             pc.enabled = true;
+            timer += Time.deltaTime;
+
+            if (timer >= waitingTime) {
+                lr.enabled = false;
+                lr.loop = false; 
+                timer -= waitingTime;
+            }
         }
 
         if (Input.GetMouseButtonUp(0)) {

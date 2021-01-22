@@ -246,6 +246,8 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  RedBg: {fileID: 0}
+  particles: {fileID: 0}
 --- !u!68 &3039778242869701342
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -279,5 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e609eb8f8fc499d479b0370f68294072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drawingState: 0
+  collisionHappened: 0
   linePositions: []
   Points2d: []

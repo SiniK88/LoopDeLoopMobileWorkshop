@@ -6,15 +6,22 @@ public class InsideOfPolygonCollider : MonoBehaviour
 {
     public int ballsInside;
     PolygonCollider2D pc;
+    LineRenderer lr;
 
     [SerializeField]
     private ContactFilter2D contactFilter; // A set of parameters for filtering contact results. Mitkä kontaktitavat huomioidaan, tyyliin layermask tai trigger. 
 
+    public GameObject RedBg; 
+
     List<Vector2> offsets = new List<Vector2>();
 
+    public Transform particles;
+
     void Start() {
+        RedBg.SetActive(false);
 
         pc = GetComponent<PolygonCollider2D>();
+        lr = GetComponent<LineRenderer>();
         //offsets = new List<Vector2> { Vector2.up * 0.5f, Vector2.right * 0.5f, Vector2.down * 0.5f, Vector2.left * 0.5f };
         for (int i = 0; i < 6; i++) {
             offsets.Add(new Vector2(0 + 0.3f * Mathf.Cos((i * 60) * (Mathf.PI / 180)), 0 + 0.3f * Mathf.Sin((i * 60) * (Mathf.PI / 180))));
@@ -49,18 +56,32 @@ public class InsideOfPolygonCollider : MonoBehaviour
     private void FixedUpdate() {
         var results = BallsInsidePolygon();
         ballsInside = results.Count;
-        print("palloja sisällä" + ballsInside);
         var ballCheckResults = BallsCheck(results);
-        print("ball check result" + ballCheckResults);
-        if (ballCheckResults == true && results.Count == 2 ) {
-            ScoreCounter.scoreValue += 3; 
-            for (int i = 0; i < results.Count; i++) {
 
+        print(" ball scheck results " + ballCheckResults);
+
+        if (ballCheckResults == true && results.Count == 2 ) {
+            ScoreCounter.scoreValue += 3;
+            //var boom = Instantiate(particles, transform.position, transform.rotation);
+            //Destroy(boom.gameObject, 1);
+            for (int i = 0; i < results.Count; i++) {
+                var boom = Instantiate(particles, results[i].transform.position, transform.rotation);
+                Destroy(boom.gameObject, 1);
                 print("tässä pitäisi tuhota pallo " + results[i]);
                 //Destroy(results[i].transform.parent.gameObject);
                 Destroy(results[i].gameObject);
             }
         }
+
+        /*
+        // ruudun väri välkähtää. Ei näyttänyt hyvältä
+        if(lr.loop == true && ballCheckResults == false)  {
+            RedBg.SetActive(true);
+        }
+
+        if(lr.loop == false) {
+            RedBg.SetActive(false);
+        }*/
 
     }
 
