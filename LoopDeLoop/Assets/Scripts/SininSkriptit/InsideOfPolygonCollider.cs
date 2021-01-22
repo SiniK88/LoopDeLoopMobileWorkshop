@@ -21,8 +21,8 @@ public class InsideOfPolygonCollider : MonoBehaviour
             // offset ns. siirros. Kuinka paljon siirtyy keskipisteestä tiettyyn suuntaan. Katsotaan 6 siirrosta ympyrän kehältä kun radius (säde) on 0.5
         }
 
-   
     }
+
     public List<BallProperties> BallsInsidePolygon() {
 
         List<Collider2D> coll = new List<Collider2D>(); // lista jossa collider2D juttuja
@@ -52,7 +52,7 @@ public class InsideOfPolygonCollider : MonoBehaviour
         print("palloja sisällä" + ballsInside);
         var ballCheckResults = BallsCheck(results);
         print("ball check result" + ballCheckResults);
-        if (ballCheckResults == true && results.Count == 3 ) {
+        if (ballCheckResults == true && results.Count == 2 ) {
             ScoreCounter.scoreValue += 3; 
             for (int i = 0; i < results.Count; i++) {
 
@@ -65,24 +65,22 @@ public class InsideOfPolygonCollider : MonoBehaviour
     }
 
     bool BallsCheck (List<BallProperties> lista) {
-        if(lista.Count == 3) {
+        if(lista.Count == 2) { 
             var h1 = (int)lista[0].ballColour;
             var h2 = (int)lista[1].ballColour;
-            var h3 = (int)lista[2].ballColour;
+            //r h3 = (int)lista[2].ballColour;
 
-            print(" mikä pallo sisällä numero 1" + h1);
-            print("mikä pallo sisällä numero 2" + h2);
-            print("mikä pallo sisällä numero 3" + h3);
-            if( (h1 == h2) && (h2 == h3)) {
-                return true;
-            }
+            if( (h1 == h2) ) {
+                 // ( (h1 == h2) && (h2 == h3)) {
+                 return true;
+             }
             /*for ( int i = 1; i < lista.Count; i++) {
                 if( (int)lista[i].ballColour == h1) {
                     return true;
                 }
             }*/
         }
-        return false;
+       return false;
    // katso onko palloja oikea määrä ja että ne ovat samaa väriä. Jos vaikka tasan 3 palloa. Katso onko kolme palloa
    //sitten esim. ekan pallon väri talteen muuttujaan, loopataan läpi. Jos yksikin pallo oli väärin, palauttaa falsen
     }

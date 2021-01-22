@@ -35,7 +35,7 @@ public class UpdatePolygonCollider : MonoBehaviour
         lr = gameObject.GetComponent<LineRenderer>();
         if(lr.loop == true ) {
             //print(" line renrederer loop true ");
-
+            //polygonCollider.enabled = true;
             Vector2[] pos2 = new Vector2[lr.positionCount];
             for (int i = 0; i < lr.positionCount; i++) {
                 Vector3 tempv3 = lr.GetPosition(i);
