@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BallSpawner : MonoBehaviour {
     public GameObject ball;
+    public int ballCount;
     public float spawnTime;
     public Transform spawnPoint1;
     public Transform spawnPoint2;
@@ -27,13 +28,17 @@ public class BallSpawner : MonoBehaviour {
             finalSpawnPoint = spawnPoint4;
             }
         var ballCopy = Instantiate(ball);
+        ballCount++;
         ballCopy.transform.position = finalSpawnPoint.position;
         yield return new WaitForSeconds(spawnTime);
-        StartCoroutine(Timer());
+        if (ballCount < 15) {
+            StartCoroutine(Timer());
+            }
         }
 
     void Start() {
-        spawnNum = Random.Range(0, 4);
+        //spawnNum = Random.Range(0, 4);
         StartCoroutine(Timer());
         }
+
     }

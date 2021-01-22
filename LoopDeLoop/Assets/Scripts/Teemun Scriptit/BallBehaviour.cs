@@ -28,14 +28,11 @@ public class BallBehaviour : MonoBehaviour {
         //Randomise launch direction per ball
         if (dirSelector == 0) {
             finalDir = launchDir1;
-            }
-        else if(dirSelector == 1) {
+            } else if (dirSelector == 1) {
             finalDir = laucnhDir2;
-            }
-        else if(dirSelector == 2) {
+            } else if (dirSelector == 2) {
             finalDir = launchDir3;
-            }
-        else if(dirSelector == 3) {
+            } else if (dirSelector == 3) {
             finalDir = launchDir4;
             }
 
@@ -48,14 +45,12 @@ public class BallBehaviour : MonoBehaviour {
             if (ballColour == BallColour.Blue) {
                 rend.material = materials[0];
                 }
-            }
-        else if(colourSelector == 1) {
+            } else if (colourSelector == 1) {
             ballColour = BallColour.Red;
             if (ballColour == BallColour.Red) {
                 rend.material = materials[1];
                 }
-            }
-        else if(colourSelector == 2) {
+            } else if (colourSelector == 2) {
             ballColour = BallColour.Yellow;
             if (ballColour == BallColour.Yellow) {
                 rend.material = materials[2];
@@ -69,23 +64,29 @@ public class BallBehaviour : MonoBehaviour {
 
     void OnCollisionExit2D(Collision2D collision) {
         var rotClockwise = Quaternion.AngleAxis(-minAngle, Vector3.forward);
+        //var rotClockwise2 = Quaternion.AngleAxis(-minAngle, Vector3.back);
         var rotCounterclockwise = Quaternion.AngleAxis(minAngle, Vector3.forward);
 
         var newVelocity = ballRb.velocity.normalized * speed;
 
         //Left angle fix
-        if(Vector3.Angle(ballRb.velocity, Vector3.left) < minAngle) {
+        if (Vector3.Angle(ballRb.velocity, Vector3.left) < minAngle) {
             Debug.Log("Bounced too horizontally to left");
             if (goingUp) {
                 Debug.Log("Fix velocity to minAngle left and up");
                 var newDir = rotClockwise * Vector3.left;
                 newVelocity = newDir * speed;
                 }
+
             }
 
         //Right angle fix
-        if(Vector3.Angle(ballRb.velocity, Vector3.right) < minAngle) {
+        if (Vector3.Angle(ballRb.velocity, Vector3.right) < minAngle) {
             Debug.Log("Bounced too horizontally to right");
+            if (goingUp) {
+                var newDir = rotCounterclockwise * Vector3.right;
+                newVelocity = newDir * speed;
+                }
             }
 
         //Speed after collisions

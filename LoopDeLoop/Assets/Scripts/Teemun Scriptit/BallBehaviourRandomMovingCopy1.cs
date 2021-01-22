@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class BallBehaviourRandomMovingCopy1 : MonoBehaviour
 {
-    Rigidbody ballRb;
+    GameObject ballPropertiesHolder;
+    BallPropertiesCopy ballProperties;
+    Rigidbody2D ballRb;
     Renderer rend;
     Vector2 launchDir1 = new Vector2(1f, 1f); //Oikea yläviisto
     Vector2 laucnhDir2 = new Vector2(-1f, -1f); //Vasen alaviisto
@@ -14,18 +16,21 @@ public class BallBehaviourRandomMovingCopy1 : MonoBehaviour
     public int dirSelector;
     public int colourSelector;
     public float speed;
-    public BallColour2 ballColour;
-    public Material[] materials;
+
     public float waitingTime = 2f;
     public float maxSpeed = 1f;
     private Vector3 movement;
     private float timeStart = 0;
 
+    public float MaxVelocity = 0.7f;
+
     // Start is called before the first frame update
     void Start() {
         dirSelector = Random.Range(0, 4);
         colourSelector = Random.Range(0, 3);
-        ballRb = GetComponent<Rigidbody>();
+        ballPropertiesHolder = GameObject.Find("BallPropertyHolder");
+        ballProperties = ballPropertiesHolder.GetComponent<BallPropertiesCopy>();
+        ballRb = GetComponent<Rigidbody2D>();
         rend = GetComponent<Renderer>();
 
         //Randomise launch direction per ball
@@ -42,23 +47,26 @@ public class BallBehaviourRandomMovingCopy1 : MonoBehaviour
         // Pallon lopullinen suunta lähtiessä
         ballRb.velocity = finalDir.normalized * speed;
 
+        //Material for ball
+        rend.material = ballProperties.materials[(int)ballProperties.ballColour];
+
         // Väri randomiser
-        if (colourSelector == 0) {
+        /*if (colourSelector == 0) {
             ballColour = BallColour2.Blue;
             if (ballColour == BallColour2.Blue) {
                 rend.material = materials[0];
-                }
-            } else if (colourSelector == 1) {
+            }
+        } else if (colourSelector == 1) {
             ballColour = BallColour2.Red;
             if (ballColour == BallColour2.Red) {
                 rend.material = materials[1];
-                }
-            } else if (colourSelector == 2) {
+            }
+        } else if (colourSelector == 2) {
             ballColour = BallColour2.Yellow;
             if (ballColour == BallColour2.Yellow) {
                 rend.material = materials[2];
-                }
             }
+        }*/
 
 
         }
@@ -73,5 +81,7 @@ public class BallBehaviourRandomMovingCopy1 : MonoBehaviour
 
     void FixedUpdate() { //  FixedUpdate can run once, zero, or several times per frame. exactly in sync with the physics engine itself
         ballRb.AddForce(movement * maxSpeed); //  object will be accelerated by the force. Antaa siis ns. voimaa siihen suuntaan missä "movement" piste on
+        ballRb.velocity = Vector3.ClampMagnitude(ballRb.velocity, MaxVelocity);
+
         }
     }
