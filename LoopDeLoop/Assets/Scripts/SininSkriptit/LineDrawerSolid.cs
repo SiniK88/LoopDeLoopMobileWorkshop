@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LineDrawer1 : MonoBehaviour
+public class LineDrawerSolid : MonoBehaviour
 {
     LineRenderer lr;
     public List<Vector3> linePositions = new List<Vector3>();
@@ -18,7 +18,7 @@ public class LineDrawer1 : MonoBehaviour
     PolygonCollider2D pc;
     List<Vector2> defaultPoints = new List<Vector2>() { new Vector2(6, 6), new Vector2(7, 7) };
 
-    float waitingTime = 0.7f;
+    float waitingTime = 1f;
     float timer = 0;
 
     void Start() {
@@ -48,26 +48,25 @@ public class LineDrawer1 : MonoBehaviour
         Vector2 mousepos2d = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         if (Input.GetMouseButtonDown(0)) {
-                lr.enabled = true;
-                circleDrawn = false;
-                lr.loop = false;
-                linePositions.Clear();
-                lr.SetPositions(new Vector3[] { });
+            lr.enabled = true;
+            circleDrawn = false;
+            lr.loop = false;
+            linePositions.Clear();
+            lr.SetPositions(new Vector3[] { });
 
-                AddPoint();
-                Points2d.Clear();
-                edgeCollider2D.enabled = true;
-                //pc.enabled = true;
+            AddPoint();
+            Points2d.Clear();
+            edgeCollider2D.enabled = true;
+            //pc.enabled = true;
 
-            collisionToLines.drawingState = DrawingState.Drawing;
-            }
+            //collisionToLines.drawingState = DrawingState.Drawing;
+        }
 
 
 
         if (Input.GetMouseButton(0)) {
 
             Points2d.Add(mousepos2d);
-            if (collisionToLines.drawingState == DrawingState.Drawing) {
 
                 if (Vector3.Distance(mousePos, linePositions[linePositions.Count - 1]) > minDistance) {
                     AddPoint();
@@ -75,23 +74,23 @@ public class LineDrawer1 : MonoBehaviour
                         edgeCollider2D.points = Points2d.ToArray();
                     }
                 }
-            }
 
-            } else if (Input.GetMouseButtonUp(0)) {
-                edgeCollider2D.enabled = false;
-                lr.loop = true;
-                circleDrawn = true;
-                pc.enabled = false;
+
+        } else if (Input.GetMouseButtonUp(0)) {
+            edgeCollider2D.enabled = false;
+            lr.loop = true;
+            circleDrawn = true;
+            pc.enabled = false;
             //linePositions.Clear();
         }
 
-        if(lr.loop == true) {
+        if (lr.loop == true) {
             pc.enabled = true;
             timer += Time.deltaTime;
 
             if (timer >= waitingTime) {
                 lr.enabled = false;
-                lr.loop = false; 
+                lr.loop = false;
                 timer -= waitingTime;
             }
         }
@@ -100,7 +99,7 @@ public class LineDrawer1 : MonoBehaviour
             edgeCollider2D.enabled = false;
             lr.loop = true;
             circleDrawn = true;
-            pc.SetPath(0, new Vector2[] {new Vector2(0,0),new Vector2(0,0) });
+            pc.SetPath(0, new Vector2[] { new Vector2(0, 0), new Vector2(0, 0) });
             edgeCollider2D.points = defaultPoints.ToArray();
             //linePositions.Clear();
         }

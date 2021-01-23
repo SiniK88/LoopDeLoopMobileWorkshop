@@ -11,14 +11,14 @@ public class InsideOfPolygonCollider : MonoBehaviour
     [SerializeField]
     private ContactFilter2D contactFilter; // A set of parameters for filtering contact results. Mitk‰ kontaktitavat huomioidaan, tyyliin layermask tai trigger. 
 
-    public GameObject RedBg; 
+    //public GameObject RedBg; 
 
     List<Vector2> offsets = new List<Vector2>();
 
     public Transform particles;
-
+    public ScreenShaker shaker;
     void Start() {
-        RedBg.SetActive(false);
+        //RedBg.SetActive(false);
 
         pc = GetComponent<PolygonCollider2D>();
         lr = GetComponent<LineRenderer>();
@@ -73,6 +73,9 @@ public class InsideOfPolygonCollider : MonoBehaviour
             }
         }
 
+        if(lr.loop == true && ballsInside >= 2 && ballCheckResults == false) {
+            shaker.Shake();
+        }
         /*
         // ruudun v‰ri v‰lk‰ht‰‰. Ei n‰ytt‰nyt hyv‰lt‰
         if(lr.loop == true && ballCheckResults == false)  {
