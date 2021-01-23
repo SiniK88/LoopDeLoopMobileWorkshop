@@ -8,6 +8,7 @@ public class GameOver : MonoBehaviour {
     public void Retry() {
         SceneManager.LoadScene(0);
         Time.timeScale = 1;
+        ScoreCounter.scoreValue = 0;
         }
 
     public void QuitGame() {
