@@ -5,7 +5,8 @@ using UnityEngine;
 public class BallPropertiesCopy : MonoBehaviour
 {
     public BallColour2 ballColour;
-    public Material[] materials;
+    public Sprite[] sprites;
+    //public Material[] materials;
     //public DifficultyButtons dButtons;
     //MeshRenderer rend;
     //public bool randomBool = true;

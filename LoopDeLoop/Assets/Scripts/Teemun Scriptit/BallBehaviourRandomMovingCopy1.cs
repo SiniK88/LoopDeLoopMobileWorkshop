@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class BallBehaviourRandomMovingCopy1 : MonoBehaviour
 {
+    public BallColour2 ballColour;
     GameObject ballPropertiesHolder;
     BallPropertiesCopy ballProperties;
     Rigidbody2D ballRb;
-    Renderer rend;
+    SpriteRenderer rend;
     Vector2 launchDir1 = new Vector2(1f, 1f); //Oikea yläviisto
     Vector2 laucnhDir2 = new Vector2(-1f, -1f); //Vasen alaviisto
     Vector2 launchDir3 = new Vector2(1f, -1f); //Oikea alaviisto
@@ -31,7 +32,9 @@ public class BallBehaviourRandomMovingCopy1 : MonoBehaviour
         ballPropertiesHolder = GameObject.Find("BallPropertyHolder");
         ballProperties = ballPropertiesHolder.GetComponent<BallPropertiesCopy>();
         ballRb = GetComponent<Rigidbody2D>();
-        rend = GetComponent<Renderer>();
+        rend = GetComponent<SpriteRenderer>();
+
+        ballColour = ballProperties.ballColour;
 
         //Randomise launch direction per ball
         if (dirSelector == 0) {
@@ -47,8 +50,9 @@ public class BallBehaviourRandomMovingCopy1 : MonoBehaviour
         // Pallon lopullinen suunta lähtiessä
         ballRb.velocity = finalDir.normalized * speed;
 
-        //Material for ball
-        rend.material = ballProperties.materials[(int)ballProperties.ballColour];
+        //Sprite for ball
+        rend.sprite = ballProperties.sprites[(int)ballProperties.ballColour];
+        //rend.material = ballProperties.materials[(int)ballProperties.ballColour];
 
         // Väri randomiser
         /*if (colourSelector == 0) {

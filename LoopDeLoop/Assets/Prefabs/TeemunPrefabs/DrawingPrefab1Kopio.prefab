@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4680020535364061112}
   - component: {fileID: 4742239635827330972}
   - component: {fileID: 4422896022665517566}
+  - component: {fileID: 8977942461167041142}
   m_Layer: 0
   m_Name: DrawingPrefab1Kopio
   m_TagString: Untagged
@@ -186,6 +187,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballsInside: 0
+  particles: {fileID: 529395945693092589, guid: 171be0f5deb2ab24797ccfa1783b351b, type: 3}
+  shaker: {fileID: 0}
   contactFilter:
     useTriggers: 1
     useLayerMask: 0
@@ -207,7 +210,7 @@ EdgeCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4915776755483931470}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -222,3 +225,19 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &8977942461167041142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4915776755483931470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e609eb8f8fc499d479b0370f68294072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawingState: 0
+  collisionHappened: 0
+  linePositions: []
+  Points2d: []
