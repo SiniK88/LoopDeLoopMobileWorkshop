@@ -5,6 +5,7 @@ using UnityEngine;
 public class BallSpawner : MonoBehaviour {
     public GameObject ball;
     public int ballCount;
+    public int maxBallCount = 15;
     public float spawnTime;
     public Transform spawnPoint1;
     public Transform spawnPoint2;
@@ -12,6 +13,7 @@ public class BallSpawner : MonoBehaviour {
     public Transform spawnPoint4;
     Transform finalSpawnPoint;
     int spawnNum;
+    bool canSpawn = true;
 
     public IEnumerator Timer() {
         spawnNum = Random.Range(0, 4);
@@ -30,15 +32,23 @@ public class BallSpawner : MonoBehaviour {
         var ballCopy = Instantiate(ball);
         ballCount++;
         ballCopy.transform.position = finalSpawnPoint.position;
+        canSpawn = false;
         yield return new WaitForSeconds(spawnTime);
-        if (ballCount < 15) {
-            StartCoroutine(Timer());
-            }
+        canSpawn = true;
+        //if (ballCount < maxBallCount) {
+        //    StartCoroutine(Timer());
+        //    }
         }
 
     void Start() {
         //spawnNum = Random.Range(0, 4);
-        StartCoroutine(Timer());
+        //StartCoroutine(Timer());
+        }
+
+    void Update() {
+        if(ballCount < maxBallCount && canSpawn) {
+            StartCoroutine(Timer());
+            }
         }
 
     }

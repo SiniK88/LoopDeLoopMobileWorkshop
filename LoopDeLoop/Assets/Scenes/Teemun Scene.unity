@@ -607,7 +607,7 @@ PrefabInstance:
       objectReference: {fileID: 5792360020832204544, guid: 104928b3787043647841ed744a94685d, type: 3}
     - target: {fileID: 234491549287778820, guid: dc6f637a2bdb77647b5d90e77d2a3243, type: 3}
       propertyPath: spawnTime
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 234491549287778821, guid: dc6f637a2bdb77647b5d90e77d2a3243, type: 3}
       propertyPath: m_RootOrder
