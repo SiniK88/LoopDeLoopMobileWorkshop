@@ -21,6 +21,8 @@ public class LineDrawer1 : MonoBehaviour
     float waitingTime = 0.7f;
     float timer = 0;
 
+    float fadeOutSpeed = 0.5f;
+
     void Start() {
 
         lr = drawPrefab.GetComponent<LineRenderer>();
@@ -88,7 +90,6 @@ public class LineDrawer1 : MonoBehaviour
         if(lr.loop == true) {
             pc.enabled = true;
             timer += Time.deltaTime;
-
             if (timer >= waitingTime) {
                 lr.enabled = false;
                 lr.loop = false; 
@@ -114,5 +115,6 @@ public class LineDrawer1 : MonoBehaviour
         }
 
     }
+
 
 }
