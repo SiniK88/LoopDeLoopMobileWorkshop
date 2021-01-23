@@ -7,13 +7,14 @@ public class BallProperties : MonoBehaviour
 {
     public BallColour2 ballColour;
     public Material[] materials;
-    MeshRenderer rend;
+    public Sprite[] sprites;
+    SpriteRenderer rend;
     public bool randomBool = true;  
 
     // Start is called before the first frame update
     void Start()
     {
-        rend = GetComponent<MeshRenderer>();
+        rend = GetComponent<SpriteRenderer>();
         
 
         if(randomBool == true) {
@@ -21,6 +22,7 @@ public class BallProperties : MonoBehaviour
         }
 
         rend.material = materials[(int)ballColour];
+        rend.sprite = sprites[(int)ballColour];
     }
     //System.Enum.GetValues(typeof(Enemy)).Length
 

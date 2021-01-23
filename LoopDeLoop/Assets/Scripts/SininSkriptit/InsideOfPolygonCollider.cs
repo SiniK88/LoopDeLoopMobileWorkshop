@@ -56,12 +56,12 @@ public class InsideOfPolygonCollider : MonoBehaviour
     private void FixedUpdate() {
         var results = BallsInsidePolygon();
         ballsInside = results.Count;
-        var ballCheckResults = BallsCheck(results);
 
-        print(" ball scheck results " + ballCheckResults);
+        var ballCheckResults = BallsCheck(results);
+        //print(" ball scheck results " + ballCheckResults);
 
         if (ballCheckResults == true && results.Count == 2 ) {
-            ScoreCounter.scoreValue += 3;
+            ScoreCounter.scoreValue += 10;
             //var boom = Instantiate(particles, transform.position, transform.rotation);
             //Destroy(boom.gameObject, 1);
             for (int i = 0; i < results.Count; i++) {
@@ -98,13 +98,13 @@ public class InsideOfPolygonCollider : MonoBehaviour
                  // ( (h1 == h2) && (h2 == h3)) {
                  return true;
              }
-            /*for ( int i = 1; i < lista.Count; i++) {
-                if( (int)lista[i].ballColour == h1) {
+            /*for ( int i = 0; i < lista.Count; i++) {
+                if( (int)lista[i].ballColour == (int)lista[i+1].ballColour  ) {
                     return true;
                 }
             }*/
         }
-       return false;
+        return false;
    // katso onko palloja oikea määrä ja että ne ovat samaa väriä. Jos vaikka tasan 3 palloa. Katso onko kolme palloa
    //sitten esim. ekan pallon väri talteen muuttujaan, loopataan läpi. Jos yksikin pallo oli väärin, palauttaa falsen
     }
