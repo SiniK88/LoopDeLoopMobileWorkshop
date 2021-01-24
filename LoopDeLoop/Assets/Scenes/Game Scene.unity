@@ -1013,7 +1013,7 @@ PrefabInstance:
       objectReference: {fileID: 529395945693092589, guid: 171be0f5deb2ab24797ccfa1783b351b, type: 3}
     - target: {fileID: 7479599069966730989, guid: 393b5d5aa82c7d0489b273278e9c6fb9, type: 3}
       propertyPath: winPoints
-      value: 30
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7479599069966730989, guid: 393b5d5aa82c7d0489b273278e9c6fb9, type: 3}
       propertyPath: ballSpawner
@@ -1572,6 +1572,10 @@ PrefabInstance:
     - target: {fileID: 234491549287778819, guid: dc6f637a2bdb77647b5d90e77d2a3243, type: 3}
       propertyPath: m_Name
       value: Ball Spawner 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 234491549287778820, guid: dc6f637a2bdb77647b5d90e77d2a3243, type: 3}
+      propertyPath: spawnTime
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 234491549287778821, guid: dc6f637a2bdb77647b5d90e77d2a3243, type: 3}
       propertyPath: m_RootOrder
