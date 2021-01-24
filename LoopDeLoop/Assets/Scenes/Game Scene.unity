@@ -937,6 +937,10 @@ PrefabInstance:
       propertyPath: ballSpawner
       value: 
       objectReference: {fileID: 136290495}
+    - target: {fileID: 7479599069966730989, guid: 393b5d5aa82c7d0489b273278e9c6fb9, type: 3}
+      propertyPath: ballPropertyHolder
+      value: 
+      objectReference: {fileID: 2019942905}
     - target: {fileID: 7479599069966730991, guid: 393b5d5aa82c7d0489b273278e9c6fb9, type: 3}
       propertyPath: m_UiScaleMode
       value: 2

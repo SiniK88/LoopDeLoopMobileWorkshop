@@ -13,6 +13,7 @@ public class GameTimer : MonoBehaviour
     [SerializeField]
     Text countDownText;
 
+    public GameObject ballPropertyHolder;
     public GameObject ballSpawner;
     public GameObject lose;
     public GameObject win;
@@ -32,6 +33,7 @@ public class GameTimer : MonoBehaviour
         if(timer <= 0) {
             timer = 0;
             ballSpawner.SetActive(false);
+            ballPropertyHolder.SetActive(false);
             DestroyAllObjects();
             if ( ScoreCounter.scoreValue < 10) {
                 print(" you lose ");
