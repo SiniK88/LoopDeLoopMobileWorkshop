@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour {
     public AudioClip buttonSFX;
-    AudioSource soundOutput;
+    public AudioSource soundOutput;
 
     void Start() {
-        soundOutput = GetComponent<AudioSource>();
+        //soundOutput = GetComponent<AudioSource>();
         }
 
     public void QuitGame() {
