@@ -65,7 +65,7 @@ public class InsideOfPolygonColliderFinal : MonoBehaviour
         var ballCheckResults = BallsCheck(results);
         print(" ball scheck results " + ballCheckResults);
 
-        if (ballCheckResults == true && results.Count == 2) {
+        if (ballCheckResults == true && results.Count == 3) {
             ScoreCounter.scoreValue += 10;
             //var boom = Instantiate(particles, transform.position, transform.rotation);
             //Destroy(boom.gameObject, 1);
@@ -95,13 +95,13 @@ public class InsideOfPolygonColliderFinal : MonoBehaviour
     }
 
     bool BallsCheck(List<BallBehaviourRandomMovingCopy1> lista) {
-        if (lista.Count == 2) {
+        if (lista.Count == 3) {
             var h1 = (int)lista[0].ballColour;
             var h2 = (int)lista[1].ballColour;
-            //r h3 = (int)lista[2].ballColour;
+            var h3 = (int)lista[2].ballColour;
 
-            if ((h1 == h2)) {
-                // ( (h1 == h2) && (h2 == h3)) {
+            //if ((h1 == h2)) {
+                 if( (h1 == h2) && (h2 == h3)) {
                 return true;
             }
             /*for ( int i = 0; i < lista.Count; i++) {

@@ -8,6 +8,7 @@ public class GameTimer : MonoBehaviour
 
     public float gameTime = 20;
     public float timer = 0;
+    public float winPoints = 30;
     float endTime = 0;
 
     [SerializeField]
@@ -35,7 +36,7 @@ public class GameTimer : MonoBehaviour
             ballSpawner.SetActive(false);
             ballPropertyHolder.SetActive(false);
             DestroyAllObjects();
-            if ( ScoreCounter.scoreValue < 10) {
+            if ( ScoreCounter.scoreValue < winPoints) {
                 print(" you lose ");
                 lose.SetActive(true);
             }
