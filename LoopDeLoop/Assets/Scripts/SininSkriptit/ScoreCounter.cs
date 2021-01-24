@@ -7,14 +7,21 @@ public class ScoreCounter : MonoBehaviour
 {
     public static int scoreValue = 0;
     Text score;
+    public GameObject timer;
+    float winPoints;
     void Start()
     {
-        score = GetComponent<Text>(); 
+        score = GetComponent<Text>();
+        winPoints = timer.GetComponent<GameTimer>().winPoints;
     }
 
     // Update is called once per frame
     void Update()
     {
-        score.text = "Score: " + scoreValue; 
+        //var winPoints = timer.GetComponent<GameTimer>().winPoints;
+        score.text = "Score: " + scoreValue + "/" + winPoints;
+        if (scoreValue >= winPoints) {
+            score.color = Color.green;
+        }
     }
 }

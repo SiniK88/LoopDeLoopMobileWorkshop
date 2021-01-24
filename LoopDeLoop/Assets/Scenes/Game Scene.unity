@@ -661,6 +661,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7071098129503638272, guid: c5033aaf080f31341928a793b790dd85, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5033aaf080f31341928a793b790dd85, type: 3}
 --- !u!1 &459267870 stripped
@@ -882,7 +886,7 @@ PrefabInstance:
       objectReference: {fileID: 529395945693092589, guid: 171be0f5deb2ab24797ccfa1783b351b, type: 3}
     - target: {fileID: 7479599069966730989, guid: 393b5d5aa82c7d0489b273278e9c6fb9, type: 3}
       propertyPath: winPoints
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7479599069966730989, guid: 393b5d5aa82c7d0489b273278e9c6fb9, type: 3}
       propertyPath: ballSpawner
@@ -962,13 +966,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1681483770774026644, guid: 00a5ade7342579b4fb8276311e5d27fa, type: 3}
+      propertyPath: timer
+      value: 
+      objectReference: {fileID: 724468479}
+    - target: {fileID: 1681483770774026651, guid: 00a5ade7342579b4fb8276311e5d27fa, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1681483772271042945, guid: 00a5ade7342579b4fb8276311e5d27fa, type: 3}
       propertyPath: m_Name
       value: ScoreCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 1681483772271042945, guid: 00a5ade7342579b4fb8276311e5d27fa, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1681483772271042949, guid: 00a5ade7342579b4fb8276311e5d27fa, type: 3}
       propertyPath: m_Pivot.x
@@ -1409,6 +1417,10 @@ PrefabInstance:
     - target: {fileID: 702285811534232859, guid: ee38ef14665468049aee6f2b00166c44, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 702285811789888554, guid: ee38ef14665468049aee6f2b00166c44, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee38ef14665468049aee6f2b00166c44, type: 3}
