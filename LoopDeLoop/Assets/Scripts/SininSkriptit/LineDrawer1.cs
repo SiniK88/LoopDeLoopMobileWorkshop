@@ -91,6 +91,7 @@ public class LineDrawer1 : MonoBehaviour
             pc.enabled = true;
             timer += Time.deltaTime;
             if (timer >= waitingTime) {
+                pc.enabled = false; 
                 lr.enabled = false;
                 lr.loop = false; 
                 timer -= waitingTime;
