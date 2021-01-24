@@ -78,7 +78,7 @@ public class BallBehaviourRandomMovingCopy1 : MonoBehaviour
     void Update() { // Update runs once per frame
         timeStart -= Time.deltaTime; // v‰hennet‰‰n time.deltatime joka framella kunnes se on pienempi kuin 0
         if (timeStart <= 0) {
-            movement = new Vector3(Random.Range(-2f, 3f), Random.Range(-2f, 3f), 0); // random Alue jolla pallo voi liikkua
+            movement = new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0); // random Alue jolla pallo voi liikkua
             timeStart += waitingTime;  // lis‰t‰‰n waitingTime timeStart kohtaan, niin ett‰ hakee aina uuden random vector3 pisteen 2 sekunnin v‰lein
             }
         }
