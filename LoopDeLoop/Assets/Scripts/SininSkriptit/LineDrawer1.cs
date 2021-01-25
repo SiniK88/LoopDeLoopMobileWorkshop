@@ -9,18 +9,16 @@ public class LineDrawer1 : MonoBehaviour
     Vector3 mousePos;
     public GameObject drawPrefab;
     public float minDistance = 0.2f;
-
     public bool circleDrawn = false;
 
     EdgeCollider2D edgeCollider2D;
     public List<Vector2> Points2d;
     CollisionToLines collisionToLines;
     PolygonCollider2D pc;
-    List<Vector2> defaultPoints = new List<Vector2>() { new Vector2(6, 6), new Vector2(7, 7) };
+    List<Vector2> defaultPoints = new List<Vector2>() { new Vector2(6, 6), new Vector2(7, 7) }; // shitty fix
 
     float waitingTime = 0.7f;
     float timer = 0;
-
 
     void Start() {
 

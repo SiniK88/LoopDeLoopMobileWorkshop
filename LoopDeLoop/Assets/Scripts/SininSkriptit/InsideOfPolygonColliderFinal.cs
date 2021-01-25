@@ -15,7 +15,6 @@ public class InsideOfPolygonColliderFinal : MonoBehaviour
 
     public Transform particles;
     public ScreenShaker shaker;
-
     public GameObject spawner;
     BallSpawner spawnerScript;
     void Start() {
@@ -29,6 +28,7 @@ public class InsideOfPolygonColliderFinal : MonoBehaviour
         for (int i = 0; i < 6; i++) {
             offsets.Add(new Vector2(0 + 0.3f * Mathf.Cos((i * 60) * (Mathf.PI / 180)), 0 + 0.3f * Mathf.Sin((i * 60) * (Mathf.PI / 180))));
             // offset ns. siirros. Kuinka paljon siirtyy keskipisteest‰ tiettyyn suuntaan. Katsotaan 6 siirrosta ympyr‰n keh‰lt‰ kun radius (s‰de) on 0.5
+            // radius should be read from circle colliders or public
         }
 
     }
@@ -57,7 +57,7 @@ public class InsideOfPolygonColliderFinal : MonoBehaviour
         return true;
     }
     private void FixedUpdate() {
-        var results = BallsInsidePolygon();
+        var results = BallsInsidePolygon(); // public function that would be callled when line is finished. 
         ballsInside = results.Count;
         print("balls inside" + ballsInside);
         var ballCheckResults = BallsCheck(results);
@@ -76,6 +76,7 @@ public class InsideOfPolygonColliderFinal : MonoBehaviour
 
         if (lr.loop == true && ballsInside >= 2 && ballCheckResults == false) {
             shaker.Shake();
+            // small delay until you can draw again. Can feel restricting. Or take away points
         }
         /*
         // ruudun v‰ri v‰lk‰ht‰‰. Ei n‰ytt‰nyt hyv‰lt‰
