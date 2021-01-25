@@ -9,7 +9,7 @@ public class GameTimer : MonoBehaviour
     public float gameTime = 20;
     public float timer = 0;
     public float winPoints = 30;
-    float endTime = 0;
+
 
     [SerializeField]
     Text countDownText;

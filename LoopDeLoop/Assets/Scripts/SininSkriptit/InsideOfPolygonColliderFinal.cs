@@ -11,8 +11,6 @@ public class InsideOfPolygonColliderFinal : MonoBehaviour
     [SerializeField]
     private ContactFilter2D contactFilter; // A set of parameters for filtering contact results. Mitk‰ kontaktitavat huomioidaan, tyyliin layermask tai trigger. 
 
-    //public GameObject RedBg; 
-
     List<Vector2> offsets = new List<Vector2>();
 
     public Transform particles;
@@ -45,7 +43,7 @@ public class InsideOfPolygonColliderFinal : MonoBehaviour
             if (BallInside(p))
                 inside.Add(c.GetComponent<BallBehaviourRandomMovingCopy1>()); // laitetaan kaikki ne gameobjectit inside listan sis‰‰n joissa jokainen piste osui pc:iin
         }
-        print(" ball is touching polygon collider " + colliderCount);
+        //print(" ball is touching polygon collider " + colliderCount);
         return inside;
     }
 
@@ -63,17 +61,14 @@ public class InsideOfPolygonColliderFinal : MonoBehaviour
         ballsInside = results.Count;
         print("balls inside" + ballsInside);
         var ballCheckResults = BallsCheck(results);
-        print(" ball scheck results " + ballCheckResults);
 
         if (ballCheckResults == true && results.Count == 3) {
             ScoreCounter.scoreValue += 10;
-            //var boom = Instantiate(particles, transform.position, transform.rotation);
-            //Destroy(boom.gameObject, 1);
+
             for (int i = 0; i < results.Count; i++) {
                 var boom = Instantiate(particles, results[i].transform.position, transform.rotation);
                 Destroy(boom.gameObject, 1);
-                print("t‰ss‰ pit‰isi tuhota pallo " + results[i]);
-                //Destroy(results[i].transform.parent.gameObject);
+                //print("t‰ss‰ pit‰isi tuhota pallo " + results[i]);
                 Destroy(results[i].gameObject);
                 spawnerScript.ballCount--;
             }

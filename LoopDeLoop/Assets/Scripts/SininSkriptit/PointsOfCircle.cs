@@ -14,7 +14,7 @@ public class PointsOfCircle : MonoBehaviour
     float positionx;
     float positiony;
     float circleRadius;
-    int i = 0;
+
 
     void Start()
     {

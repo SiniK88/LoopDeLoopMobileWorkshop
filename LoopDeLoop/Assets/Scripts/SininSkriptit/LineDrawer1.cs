@@ -21,7 +21,6 @@ public class LineDrawer1 : MonoBehaviour
     float waitingTime = 0.7f;
     float timer = 0;
 
-    float fadeOutSpeed = 0.5f;
 
     void Start() {
 
@@ -43,7 +42,6 @@ public class LineDrawer1 : MonoBehaviour
 
 
     void Update() {
-        //mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.4f);
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
 
@@ -84,7 +82,6 @@ public class LineDrawer1 : MonoBehaviour
                 lr.loop = true;
                 circleDrawn = true;
                 pc.enabled = false;
-            //linePositions.Clear();
         }
 
         if(lr.loop == true) {
